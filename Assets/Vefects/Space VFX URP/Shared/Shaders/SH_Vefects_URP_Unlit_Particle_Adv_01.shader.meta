@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 45f813fd265e5f744bfd8bcad395b1f5
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265899
+  packageName: Space VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Space VFX URP/Shared/Shaders/SH_Vefects_URP_Unlit_Particle_Adv_01.shader
+  uploadId: 793384

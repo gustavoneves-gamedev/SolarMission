@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8a39f6058556c1f409ef3da992cbe01a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265899
+  packageName: Space VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Space VFX URP/Shared/Materials/M_VFX_Lens_Flare_Blue.mat
+  uploadId: 793384

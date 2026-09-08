@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e8e307666b174ed40a343e4415fc7a0c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265899
+  packageName: Space VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Space VFX URP/Space VFX/Lasers/Particles/VFX_Laser_Shot_01_Loop.prefab
+  uploadId: 793384

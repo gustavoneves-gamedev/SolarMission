@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2fd2aeb6ab185ed419d596a1faa3bbca
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _NoiseTexture: {fileID: 2800000, guid: 884959d44dbcdba47ae7e5537bde1c54, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265899
+  packageName: Space VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Space VFX URP/Space VFX/Missiles/Shaders/SH_Vefects_URP_VFX_EMP_Energy.shader
+  uploadId: 793384
