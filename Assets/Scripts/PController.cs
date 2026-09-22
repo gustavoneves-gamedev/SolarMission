@@ -22,7 +22,7 @@ public class PController : MonoBehaviour
         foreach (PBody b1 in bodies)
         {
             if (b1.shape.isStatic) continue;
-           
+
 
             foreach (PBody b2 in bodies)
             {
@@ -36,12 +36,15 @@ public class PController : MonoBehaviour
                     b2.OnPCollisionEnter(b1);
                 }
 
-                b1.TotalForce(GravityForces(b1, b2));
-                //b1.totalForce = (GravityForces(b1, b2));
+
+
+                b1.GravityForce(GravityForces(b1, b2));
+
             }
 
             b1.PUpdate(Time.fixedDeltaTime);
-            b1.totalForce = Vector3.zero;
+            //b1.totalForce = Vector3.zero;
+            b1.gravityForce = Vector3.zero;
         }
     }
 
@@ -103,8 +106,19 @@ public class PController : MonoBehaviour
         Vector3 d = b2.shape.position - b1.shape.position;
 
         //F = G*mass*other.mass / other.shape.position - shape.position
-        Vector3 gravityForce = G * b1.mass * b2.mass * d.normalized / d.sqrMagnitude;
-        return gravityForce;
+        if (d.sqrMagnitude >= 2f)
+        {
+            Vector3 gravityForce = G * b1.mass * b2.mass * d.normalized / d.sqrMagnitude;
+            return gravityForce;
+        }
+        else
+        {
+            Vector3 gravityForce = G * b1.mass * b2.mass * d.normalized / 2f;
+            return gravityForce;
+        }
+
+
+        
 
     }
 
