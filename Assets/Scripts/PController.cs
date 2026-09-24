@@ -4,9 +4,9 @@ using UnityEngine;
 public class PController : MonoBehaviour
 {
     [SerializeField] private List<PBody> bodies = new List<PBody>();
-    [SerializeField] private float G = 0.0000000000667f;
+    //[SerializeField] private float G = 0.0000000000667f;
 
-    [Range(1f, 100f)]
+    [Range(1f, 10f)]
     public float t = 1;
 
     void Start()
@@ -35,16 +35,10 @@ public class PController : MonoBehaviour
                     b1.OnPCollisionEnter(b2);
                     b2.OnPCollisionEnter(b1);
                 }
-
-
-
-                b1.GravityForce(GravityForces(b1, b2));
-
             }
 
             b1.PUpdate(Time.fixedDeltaTime);
-            //b1.totalForce = Vector3.zero;
-            b1.gravityForce = Vector3.zero;
+            //b1.totalForce = Vector3.zero;            
         }
     }
 
@@ -100,27 +94,5 @@ public class PController : MonoBehaviour
 
         }
     }
-
-    private Vector3 GravityForces(PBody b1, PBody b2)
-    {
-        Vector3 d = b2.shape.position - b1.shape.position;
-
-        //F = G*mass*other.mass / other.shape.position - shape.position
-        if (d.sqrMagnitude >= 2f)
-        {
-            Vector3 gravityForce = G * b1.mass * b2.mass * d.normalized / d.sqrMagnitude;
-            return gravityForce;
-        }
-        else
-        {
-            Vector3 gravityForce = G * b1.mass * b2.mass * d.normalized / 2f;
-            return gravityForce;
-        }
-
-
-        
-
-    }
-
 
 }

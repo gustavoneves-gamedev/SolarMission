@@ -4,7 +4,15 @@ public class PSphere : PShape
 {
     public float radius;
 
-    
+    private void Start()
+    {
+        transform.localScale *= radius;
+    }
+
+    public override void UpdatePosition(Vector3 shapePosition)
+    {
+        
+    }
 
     public override bool GetCollision(PShape other, out PCollision hit)
     {

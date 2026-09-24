@@ -11,6 +11,8 @@ public abstract class PShape : MonoBehaviour
         position = transform.position;
     }
 
+    public abstract void UpdatePosition(Vector3 shapePosition);
+
     public abstract bool GetCollision(PShape other, out PCollision collision);
 
 }
