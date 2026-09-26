@@ -21,6 +21,9 @@ public class PBody : MonoBehaviour
 
     public void PUpdate(float t)
     {
+
+        //if (!GameController.gameController.isPaused) return;
+
         if (!isKinematic) Dynamic(t);        
 
         Kinamatic(t);
@@ -53,6 +56,17 @@ public class PBody : MonoBehaviour
     public void OnPCollisionEnter(PBody other)
     {
         Debug.Log("Colide com " + other.gameObject.name);
+
+        //if (other.CompareTag("Dart"))
+        //{
+        //    if (other.GetComponent<Dart>().hasCollided) return;
+        //    GetComponent<Target>().OnCollisionEvent();
+        //}
+        if (other.CompareTag("Target"))
+        {
+            other.GetComponent<Target>().OnCollisionEvent();
+            GetComponent<Dart>().OnCollisionEvent();
+        }
     }
 
 

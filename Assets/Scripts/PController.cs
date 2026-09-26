@@ -19,6 +19,8 @@ public class PController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!GameController.gameController.isPlaying) return;
+        
         foreach (PBody b1 in bodies)
         {
             if (b1.shape.isStatic) continue;

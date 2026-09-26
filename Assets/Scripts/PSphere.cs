@@ -6,7 +6,7 @@ public class PSphere : PShape
 
     private void Start()
     {
-        transform.localScale *= radius;
+        transform.localScale *= radius * 2f;
     }
 
     public override void UpdatePosition(Vector3 shapePosition)
