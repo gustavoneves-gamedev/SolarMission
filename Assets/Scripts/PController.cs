@@ -13,6 +13,8 @@ public class PController : MonoBehaviour
     {
         bodies.AddRange(FindObjectsByType<PBody>(FindObjectsSortMode.None));
 
+        GameController.gameController.pController = this;
+
         Time.timeScale = t;
     }
 
@@ -42,6 +44,16 @@ public class PController : MonoBehaviour
             b1.PUpdate(Time.fixedDeltaTime);
             //b1.totalForce = Vector3.zero;            
         }
+    }
+
+    public void AddToPhysicsPool(PBody objectToAdd)
+    {
+        bodies.Add(objectToAdd);
+    }
+
+    public void RemoveFromPhysicsPool(PBody objectToAdd)
+    {
+        bodies.Remove(objectToAdd);
     }
 
     private void Constraints(PBody b1, PBody b2, PCollision hit)

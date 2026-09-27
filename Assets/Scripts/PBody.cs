@@ -69,5 +69,12 @@ public class PBody : MonoBehaviour
         }
     }
 
+    //public Vector3 WindForce(Vector3 windForce)
+    //{
+    //   if (windForce )
+        
+    //    return windForce;
+    //}
+
 
 }

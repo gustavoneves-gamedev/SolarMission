@@ -19,7 +19,8 @@ public class GameController : MonoBehaviour
     public bool isPlaying;
 
     public UIController uiController;
-    public Dart currentDart;
+    //public Dart currentDart;
+    public PController pController;
 
     private void Awake()
     {
@@ -40,23 +41,33 @@ public class GameController : MonoBehaviour
 
     private void SetWind()
     {
-        windForce.x = Random.Range(0f, 1f);
-        windForce.y = Random.Range(0f, 1f);
-        windForce.z = Random.Range(0f, 1f);
+        windForce.x = Random.Range(-5f, 5f);
+        //windForce.y = Random.Range(-5f, 5f);
+        //windForce.z = Random.Range(-5f, 5f);
+        windForce.y = 0;
+        windForce.z = 0;
 
-        windForce *= Random.Range(0f, 5f);
+        //windForce *= Random.Range(0f, 5f);
     }
 
     public void NextRound()
     {
-        Time.timeScale = 1f;
-
-
-        Destroy(currentDart);
-        round++;
         darts--;
-        uiController.UpdateDarts(darts);
-        SetWind();
+
+        if (darts <= 0)
+        {
+
+        }
+        else
+        {
+            Time.timeScale = 1f;
+
+            //Destroy(currentDart);
+            round++;
+
+            uiController.UpdateDarts(darts);
+            SetWind();
+        }
     }
     
 

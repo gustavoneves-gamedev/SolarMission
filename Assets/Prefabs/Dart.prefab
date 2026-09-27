@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PBody
   mass: 1
   gravityScale: 1
-  velocity: {x: 0, y: 0, z: 10}
+  velocity: {x: 0, y: 0, z: 0}
   initialForce: {x: 0, y: 0, z: 0}
   totalForce: {x: 0, y: 0, z: 0}
   gravityForce: {x: 0, y: 0, z: 0}

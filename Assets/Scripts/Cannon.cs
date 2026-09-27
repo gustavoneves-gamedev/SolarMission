@@ -9,7 +9,8 @@ public class Cannon : MonoBehaviour
     private float x, y;
     [SerializeField] private float rotationSpeed = 10f;
 
-    
+    [SerializeField] private float initialSpeed = 50f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,8 +46,10 @@ public class Cannon : MonoBehaviour
     public void Fire()
     {
         GameObject cannonBall = Instantiate(dart, gunPoint.position, gunPoint.rotation);
-        cannonBall.GetComponent<PBody>().initialForce = new Vector3(0, 20f, 0);
-        
+        PBody ballPBody = cannonBall.GetComponent<PBody>();
+        ballPBody.velocity = cannonBall.transform.forward * initialSpeed;
+        ballPBody.totalForce = GameController.gameController.windForce;
+        GameController.gameController.pController.AddToPhysicsPool(ballPBody);
     }
 
 }

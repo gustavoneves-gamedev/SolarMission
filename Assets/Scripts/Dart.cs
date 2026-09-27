@@ -6,13 +6,15 @@ public class Dart : MonoBehaviour
 
     private void Start()
     {
-        
+        Invoke("Destroy", 5f);
     }
 
     public void OnCollisionEvent()
     {
         if (hasCollided) return;
         
+        CancelInvoke();
+
         Debug.Log("Colidi com alvo!");
         hasCollided = true;
 
@@ -20,6 +22,21 @@ public class Dart : MonoBehaviour
 
         GameController.gameController.uiController.EndRound();
 
+        GetComponent<MeshRenderer>().enabled = false;
 
+        //Destroy();
+        //GameController.gameController.pController.RemoveFromPhysicsPool(GetComponent<PBody>());
+        // Destroy(gameObject);
+    }
+
+    private void Destroy()
+    {
+        OnCollisionEvent();
+
+       // GameController.gameController.pController.RemoveFromPhysicsPool(GetComponent<PBody>());
+
+        GetComponent<MeshRenderer>().enabled = false;
+
+       // Destroy(gameObject);
     }
 }
