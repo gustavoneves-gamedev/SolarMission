@@ -19,8 +19,9 @@ public class GameController : MonoBehaviour
     public bool isPlaying;
 
     public UIController uiController;
-    //public Dart currentDart;
+    public Cannon cannon;
     public PController pController;
+    public CameraFollow mainCamera;
 
     private void Awake()
     {
@@ -32,6 +33,9 @@ public class GameController : MonoBehaviour
         SetWind();
         //SetTargetPosition();
         isPlaying = true;
+        cannon.canFire = true;
+        uiController.UpdatePoints();
+        uiController.inGameMenu.SetActive(true);
     }
 
     private void SetTargetPosition()
@@ -42,21 +46,23 @@ public class GameController : MonoBehaviour
     private void SetWind()
     {
         windForce.x = Random.Range(-5f, 5f);
-        //windForce.y = Random.Range(-5f, 5f);
-        //windForce.z = Random.Range(-5f, 5f);
-        windForce.y = 0;
-        windForce.z = 0;
+        windForce.y = Random.Range(-5f, 5f);
+        windForce.z = Random.Range(-5f, 5f);
+        //windForce.y = 0;
+        //windForce.z = 0;
 
         //windForce *= Random.Range(0f, 5f);
+        uiController.UpdateWind();
     }
 
     public void NextRound()
     {
         darts--;
+        mainCamera.isFollowingDart = false;
 
         if (darts <= 0)
         {
-
+            EndGame();
         }
         else
         {
@@ -64,6 +70,8 @@ public class GameController : MonoBehaviour
 
             //Destroy(currentDart);
             round++;
+
+            cannon.canFire = true;
 
             uiController.UpdateDarts(darts);
             SetWind();
@@ -77,5 +85,17 @@ public class GameController : MonoBehaviour
         //uiController.UpdateDarts(totalPoints);
     }
 
+    private void EndGame()
+    {
+        isPlaying = false;
+        uiController.EndGame();
+    }
+
+    public void ResetGame()
+    {
+        darts = 3;
+        points = 0;
+        BeginPlay();
+    }
 
 }

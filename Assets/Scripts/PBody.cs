@@ -55,7 +55,7 @@ public class PBody : MonoBehaviour
 
     public void OnPCollisionEnter(PBody other)
     {
-        Debug.Log("Colide com " + other.gameObject.name);
+        //Debug.Log("Colide com " + other.gameObject.name);
 
         //if (other.CompareTag("Dart"))
         //{

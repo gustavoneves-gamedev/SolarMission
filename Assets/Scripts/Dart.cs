@@ -3,9 +3,11 @@ using UnityEngine;
 public class Dart : MonoBehaviour
 {
     public bool hasCollided;
+    private TrailRenderer trail;
 
     private void Start()
     {
+        trail = GetComponent<TrailRenderer>();
         Invoke("Destroy", 5f);
     }
 
@@ -15,14 +17,23 @@ public class Dart : MonoBehaviour
         
         CancelInvoke();
 
-        Debug.Log("Colidi com alvo!");
+        //Debug.Log("Colidi com alvo!");
         hasCollided = true;
 
         GameController.gameController.uiController.UpdatePoints();
 
-        GameController.gameController.uiController.EndRound();
+        if (GameController.gameController.darts <= 1)
+        {
+            GameController.gameController.NextRound();
+        }
+        else
+        {
+            GameController.gameController.uiController.EndRound();
+        }
+            
 
         GetComponent<MeshRenderer>().enabled = false;
+        trail.enabled = false;
 
         //Destroy();
         //GameController.gameController.pController.RemoveFromPhysicsPool(GetComponent<PBody>());

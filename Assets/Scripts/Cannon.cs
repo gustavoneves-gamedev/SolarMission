@@ -11,10 +11,12 @@ public class Cannon : MonoBehaviour
 
     [SerializeField] private float initialSpeed = 50f;
 
+    public bool canFire;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameController.gameController.cannon = this;
     }
 
     // Update is called once per frame
@@ -23,19 +25,33 @@ public class Cannon : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
            // y = y + 1 * Time.deltaTime;
-            Vector3 rotate = new Vector3(x, rotationSpeed * Time.deltaTime, 0);
+            Vector3 rotate = new Vector3(0, rotationSpeed * Time.deltaTime, 0);
             transform.Rotate(rotate);
         }
         if (Input.GetKey(KeyCode.A))
         {
             //y = y - 1 * Time.deltaTime;
-            Vector3 rotate = new Vector3(x, - rotationSpeed * Time.deltaTime, 0);
+            Vector3 rotate = new Vector3(0, - rotationSpeed * Time.deltaTime, 0);
+            transform.Rotate(rotate);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            // y = y + 1 * Time.deltaTime;
+            Vector3 rotate = new Vector3(rotationSpeed * Time.deltaTime,0, 0);
+            transform.Rotate(rotate);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            //y = y - 1 * Time.deltaTime;
+            Vector3 rotate = new Vector3(-rotationSpeed * Time.deltaTime,0, 0);
             transform.Rotate(rotate);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canFire)
         {
             Fire();
+            GameController.gameController.mainCamera.isFollowingDart = true;
+            canFire = false;
         }
 
         //Vector3 rotate = new Vector3 (x, y, 0);
@@ -50,6 +66,7 @@ public class Cannon : MonoBehaviour
         ballPBody.velocity = cannonBall.transform.forward * initialSpeed;
         ballPBody.totalForce = GameController.gameController.windForce;
         GameController.gameController.pController.AddToPhysicsPool(ballPBody);
+        GameController.gameController.mainCamera.UpdateTargetToFollow(cannonBall.transform);
     }
 
 }
